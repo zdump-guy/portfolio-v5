@@ -1,0 +1,221 @@
+        :root {
+            /* Extended Black Palette from design system */
+            --void-black: #000000;
+            --carbon-black: #0a0a0a;
+            --obsidian: #111111;
+            --charcoal-deep: #1a1a1a;
+            --graphite: #242424;
+            --ash-gray: #383838;
+            --smoke: #4d4d4d;
+            --pewter: #595959;
+            --steel: #737373;
+            --mist: #808080;
+            --whisper: #9a9a9a;
+            --pearl-gray: #a7a7a7;
+
+            /* Glass Effect Variations */
+            --glass-black: rgba(0, 0, 0, 0.3);
+            --glass-charcoal: rgba(26, 26, 26, 0.4);
+            --glass-smoke: rgba(77, 77, 77, 0.2);
+            --glass-border-dark: rgba(255, 255, 255, 0.08);
+            --glass-border-subtle: rgba(255, 255, 255, 0.05);
+
+            /* Mapped variables */
+            --card-background: var(--glass-charcoal);
+            --card-border: var(--glass-border-dark);
+            --text-primary: var(--pearl-gray);
+            --text-secondary: var(--mist);
+            --text-accent: var(--whisper); /* Replaced cyan with a light gray */
+            --icon-background: rgba(45, 45, 45, 0.5);
+            --icon-border: rgba(255, 255, 255, 0.1);
+            --link-background: rgba(45, 45, 45, 0.3);
+            --link-border: rgba(255, 255, 255, 0.1);
+            --link-hover-background: rgba(55, 55, 55, 0.5);
+            --tag-background: var(--glass-smoke);
+            --tag-border: var(--glass-border-subtle);
+            --tag-text: var(--steel);
+            --tag-featured-background: var(--whisper);
+            --tag-featured-text: var(--void-black);
+
+            /* Spacing & Radius from design system */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --radius-sm: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.25rem;
+            --radius-full: 9999px;
+
+            /* Animation */
+            --duration-normal: 250ms;
+            --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+
+            /* Gradient from design system */
+            --gradient-depth: linear-gradient(145deg, var(--obsidian) 0%, var(--void-black) 50%, var(--carbon-black) 100%);
+        }
+
+        /* Base & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--gradient-depth);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: var(--space-md);
+            overflow-x: hidden;
+        }
+
+        /* Main Card Container */
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card-background);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl) var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.8s var(--ease-out) forwards;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding-bottom: var(--space-sm);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-accent);
+            margin-bottom: var(--space-xs);
+        }
+
+        .header p {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--icon-background);
+            border: 1px solid var(--icon-border);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .social-icon:hover {
+            background: var(--link-hover-background);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+            border-color: var(--card-border);
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Links List */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--link-background);
+            border: 1px solid var(--link-border);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+
+        .link-item:hover {
+            background: var(--link-hover-background);
+            border-color: var(--card-border);
+            transform: scale(1.02);
+        }
+
+        .link-item i {
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+        }
+
+        .link-item .link-text {
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            body {
+                padding: var(--space-md);
+            }
+
+            .card {
+                padding: var(--space-lg) var(--space-md);
+                gap: var(--space-md);
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .link-item {
+                padding: var(--space-sm);
+            }
+        }
